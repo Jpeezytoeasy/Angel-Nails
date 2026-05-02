@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Angel Nails — Hollister, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --yellow: #f06292;
+  --yellow-light: #f8bbd0;
+  --yellow-pale: #fce4ec;
+  --yellow-dark: #c2185b;
+  --yellow-deeper: #880e4f;
+  --black: #1a1014;
+  --dark: #2e1a22;
+  --gray: #6b5860;
+  --light-gray: #fdf0f4;
+  --white: #fff9fb;
+  --border: #f0d0db;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--white);
+  color: var(--black);
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════
+   FLOATING CALL BUTTON
+══════════════════════════ */
+.floating-call {
+  position: fixed;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--yellow);
+  color: white;
+  text-decoration: none;
+  padding: 0.9rem 1.4rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 4px 18px rgba(240,98,146,0.5);
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+.floating-call:hover { background: var(--yellow-dark); transform: translateY(-2px); }
+.floating-call svg { width: 17px; height: 17px; fill: white; flex-shrink: 0; }
+
+/* ══════════════════════════
+   NAV — mobile first
+══════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1.2rem;
+  background: rgba(255,254,249,0.97);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--black);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.nav-logo-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--yellow);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Mobile nav: only show logo + call button */
+.nav-links {
+  display: none;
+}
+.nav-call-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--yellow);
+  color: white;
+  text-decoration: none;
+  padding: 0.55rem 1.1rem;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.nav-call-btn:hover { background: var(--yellow-dark); }
+.nav-call-btn svg { width: 13px; height: 13px; fill: white; }
+
+/* ══════════════════════════
+   HERO — mobile first
+══════════════════════════ */
+.hero {
+  padding-top: 64px;
+  background: var(--white);
+}
+
+.hero-content {
+  padding: 2.5rem 1.4rem 2rem;
+}
+
+.location-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--yellow-deeper);
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+.location-tag::before {
+  content: '';
+  display: inline-block;
+  width: 16px; height: 2px;
+  background: var(--yellow);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3.2rem, 14vw, 6rem);
+  font-weight: 400;
+  line-height: 0.95;
+  color: var(--black);
+  margin-bottom: 0.3rem;
+}
+h1 em { font-style: italic; color: var(--yellow-deeper); }
+
+.hero-tagline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--gray);
+  margin-bottom: 1.2rem;
+}
+
+.hero-desc {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--gray);
+  margin-bottom: 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--yellow);
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 50px;
+  transition: background 0.2s;
+  text-align: center;
+}
+.btn-primary:hover { background: var(--yellow-dark); }
+.btn-primary svg { width: 15px; height: 15px; fill: white; }
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  color: var(--black);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 2px solid var(--yellow);
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  transition: background 0.2s;
+  text-align: center;
+}
+.btn-secondary:hover { background: var(--yellow-pale); }
+
+/* Hero quick-info cards */
+.hero-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 0 1.4rem 2.5rem;
+}
+
+.hero-card {
+  background: var(--light-gray);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.hero-card-icon {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--yellow);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.hero-card-icon svg { width: 14px; height: 14px; fill: white; }
+.hero-card-label { font-size: 0.62rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.1em; }
+.hero-card-value { font-size: 0.82rem; font-weight: 500; color: var(--black); }
+
+/* ══════════════════════════
+   RATING STRIP
+══════════════════════════ */
+.rating-strip {
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+}
+.rating-item {
+  padding: 1.3rem 1.4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.rating-item:last-child { border-bottom: none; }
+.rating-big {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--yellow);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.rating-stars { color: var(--yellow); font-size: 0.82rem; letter-spacing: 0.08em; margin-bottom: 0.15rem; }
+.rating-source { font-size: 0.65rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.12em; }
+.rating-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
+.rating-label strong { display: block; color: rgba(255,255,255,0.88); font-weight: 400; }
+
+/* ══════════════════════════
+   SERVICES
+══════════════════════════ */
+.services {
+  padding: 3rem 1.4rem;
+  background: var(--light-gray);
+}
+.section-label {
+  font-size: 0.67rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--yellow-deeper);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.section-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 7vw, 3rem);
+  font-weight: 400;
+  color: var(--black);
+  line-height: 1.15;
+  margin-bottom: 2rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.service-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.3rem 1.1rem;
+  transition: border-color 0.2s;
+}
+.service-card:hover { border-color: var(--yellow); }
+.service-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--yellow-light);
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+.service-name {
+  font-size: 0.77rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--black);
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+}
+.service-desc {
+  font-size: 0.73rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+.service-price { margin-top: 0.8rem; }
+.price-btn {
+  display: inline-block;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--yellow-deeper);
+  border: 1px solid var(--yellow);
+  padding: 0.28rem 0.65rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+.price-btn:hover { background: var(--yellow); color: var(--black); }
+
+/* ══════════════════════════
+   PAYMENT
+══════════════════════════ */
+.payment-section {
+  background: var(--yellow);
+  padding: 2rem 1.4rem;
+}
+.payment-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--black);
+  margin-bottom: 0.3rem;
+}
+.payment-section p {
+  font-size: 0.8rem;
+  color: var(--yellow-deeper);
+  margin-bottom: 1.2rem;
+}
+.payment-methods {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+.payment-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: white;
+  border: 1px solid rgba(255,255,255,0.9);
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--yellow-deeper);
+}
+.payment-chip svg { width: 14px; height: 14px; }
+
+/* ══════════════════════════
+   REVIEWS
+══════════════════════════ */
+.reviews-section {
+  padding: 3rem 1.4rem;
+  background: var(--white);
+}
+.reviews-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+.review-card {
+  background: var(--yellow-pale);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem 1.3rem;
+}
+.review-quote-mark {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  color: var(--yellow);
+  line-height: 0.6;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+.review-text {
+  font-size: 0.86rem;
+  line-height: 1.75;
+  color: var(--dark);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+.review-stars { color: var(--yellow-dark); font-size: 0.8rem; margin-bottom: 0.4rem; }
+.review-meta { display: flex; justify-content: space-between; align-items: center; }
+.review-author { font-size: 0.75rem; font-weight: 500; color: var(--black); }
+.review-source { font-size: 0.65rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.1em; }
+
+/* ══════════════════════════
+   HOURS
+══════════════════════════ */
+.hours-section {
+  padding: 3rem 1.4rem;
+  background: var(--light-gray);
+  id: hours;
+}
+.hours-rows { margin-top: 1.8rem; }
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.84rem;
+}
+.hours-row:last-child { border-bottom: none; }
+.hours-day {
+  font-size: 0.73rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.hours-time { font-weight: 400; color: var(--black); }
+.today-row .hours-day { color: var(--yellow-deeper); font-weight: 500; }
+.today-row .hours-time { color: var(--yellow-deeper); font-weight: 500; }
+.today-pip {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--yellow);
+  flex-shrink: 0;
+}
+.hours-note {
+  margin-top: 1.2rem;
+  font-size: 0.73rem;
+  color: var(--gray);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ══════════════════════════
+   MAP
+══════════════════════════ */
+.map-section { display: flex; flex-direction: column; }
+.map-section iframe {
+  width: 100%;
+  height: 280px;
+  border: none;
+  display: block;
+}
+.map-info-bar {
+  background: var(--black);
+  padding: 1.5rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.map-info-bar h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 0.2rem;
+}
+.map-info-bar p {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.6;
+}
+.map-directions-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background: var(--yellow);
+  color: white;
+  text-decoration: none;
+  padding: 0.8rem 1.4rem;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  transition: background 0.2s;
+  text-align: center;
+}
+.map-directions-btn:hover { background: var(--yellow-dark); }
+
+/* ══════════════════════════
+   FOOTER
+══════════════════════════ */
+footer {
+  background: var(--dark);
+  color: rgba(255,255,255,0.5);
+  padding: 2.5rem 1.4rem 1.5rem;
+}
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 0.3rem;
+}
+.footer-logo span { color: var(--yellow); }
+.footer-tagline {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 1.2rem;
+}
+.footer-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--yellow);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  display: flex;
+}
+.footer-phone svg { width: 15px; height: 15px; fill: var(--yellow); }.footer-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  margin: 1.5rem 0;
+}
+.footer-cols {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.footer-col h4 {
+  font-size: 0.63rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+.footer-col p, .footer-col a {
+  font-size: 0.8rem;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  display: block;
+}
+.footer-col a:hover { color: rgba(255,255,255,0.8); }
+.footer-bottom {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+/* ══════════════════════════
+   TABLET / DESKTOP
+══════════════════════════ */
+@media (min-width: 640px) {
+  .services-grid { grid-template-columns: repeat(3, 1fr); }
+  .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .map-section iframe { height: 380px; }
+}
+
+@media (min-width: 900px) {
+  /* Nav */
+  nav { padding: 1rem 3rem; }
+  .nav-links {
+    display: flex;
+    gap: 2.2rem;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+    transition: color 0.2s;
+    font-weight: 400;
+  }
+  .nav-links a:hover { color: var(--black); }
+  .nav-links .nav-cta {
+    background: var(--yellow);
+    color: white !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-weight: 500 !important;
+  }
+  .nav-links .nav-cta:hover { background: var(--yellow-dark); }
+  .nav-call-btn { display: none; }
+
+  /* Hero two-column */
+  .hero {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    min-height: 100vh;
+    align-items: stretch;
+  }
+  .hero-content { padding: 5rem 4rem 5rem 5rem; }
+  .hero-actions { flex-direction: row; }
+  .btn-primary, .btn-secondary { display: inline-flex; justify-content: flex-start; }
+
+  .hero-cards {
+    padding: 0;
+    background: var(--yellow);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 3rem;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-cards::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    pointer-events: none;
+  }
+  .hero-cards::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    pointer-events: none;
+  }
+  .hero-card {
+    background: rgba(255,255,255,0.85);
+    z-index: 1;
+    max-width: 300px;
+  }
+
+  /* Rating strip horizontal */
+  .rating-strip { flex-direction: row; justify-content: center; }
+  .rating-item {
+    flex: 1;
+    max-width: 280px;
+    border-bottom: none;
+    border-right: 1px solid rgba(255,255,255,0.07);
+  }
+  .rating-item:last-child { border-right: none; }
+
+  /* Services 4 cols */
+  .services { padding: 6rem 4rem; }
+  .services-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+  /* Payment */
+  .payment-section {
+    padding: 2.5rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .payment-section p { margin-bottom: 0; }
+
+  /* Reviews 3 cols */
+  .reviews-section { padding: 6rem 4rem; }
+  .reviews-grid { grid-template-columns: repeat(3, 1fr); }
+
+  /* Hours + Map side by side */
+  .hours-map-wrap { display: grid; grid-template-columns: 1fr 1fr; }
+  .hours-section { padding: 6rem 4rem; }
+  .map-section iframe { height: 100%; min-height: 500px; }
+  .map-info-bar { flex-direction: row; align-items: center; justify-content: space-between; padding: 2rem 2.5rem; }
+  .map-info-bar p { margin-bottom: 0; }
+
+  /* Footer */
+  footer { padding: 4rem 4rem 2rem; }
+  .footer-cols { flex-direction: row; gap: 3rem; }
+  .footer-bottom { flex-direction: row; justify-content: space-between; }
+}
+</style>
+</head>
+<body>
+
+<!-- FLOATING CALL BUTTON -->
+<a href="tel:8316367644" class="floating-call" aria-label="Call Angel Nails to book">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  Call to Book
+</a>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-dot"></span>
+    Angel Nails
+  </a>
+  <!-- Mobile: just a call button -->
+  <a href="tel:8316367644" class="nav-call-btn" aria-label="Call now">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    Call Now
+  </a>
+  <!-- Desktop: full nav links -->
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#hours">Hours</a></li>
+    <li><a href="#visit">Location</a></li>
+    <li><a href="tel:8316367644" class="nav-cta">(831) 636-7644</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="location-tag">Hollister, CA · 201 McCray St Suite D</span>
+    <h1>Angel<br><em>Nails</em></h1>
+    <p class="hero-tagline">Your neighborhood nail salon</p>
+    <p class="hero-desc">Expert nail care and beautiful designs right here in Hollister. Walk-ins always welcome — no appointment needed. Call us to book your visit today.</p>
+    <div class="hero-actions">
+      <a href="tel:8316367644" class="btn-primary">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        (831) 636-7644
+      </a>
+      <a href="#services" class="btn-secondary">Our Services →</a>
+    </div>
+  </div>
+
+  <!-- On mobile these show as info cards below hero text; on desktop they become the yellow right panel -->
+  <div class="hero-cards">
+    <div class="hero-card">
+      <div class="hero-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div>
+        <div class="hero-card-label">Address</div>
+        <div class="hero-card-value">201 McCray St, Suite D · Hollister</div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div>
+        <div class="hero-card-label">Today's Hours</div>
+        <div class="hero-card-value" id="hero-hours">9:30 AM – 6:30 PM</div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-icon">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div>
+        <div class="hero-card-label">Google Rating</div>
+        <div class="hero-card-value">4.2 ★ · Walk-ins Welcome</div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-icon">
+        <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10" stroke="#1a1a14" stroke-width="1.5" fill="none"/></svg>
+      </div>
+      <div>
+        <div class="hero-card-label">We Accept</div>
+        <div class="hero-card-value">Credit · Debit · Cash</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RATING STRIP -->
+<div class="rating-strip">
+  <div class="rating-item">
+    <div class="rating-big">4.2</div>
+    <div>
+      <div class="rating-stars">★★★★☆</div>
+      <div class="rating-source">Google Reviews</div>
+    </div>
+  </div>
+  <div class="rating-item">
+    <div class="rating-label"><strong>Walk-ins Welcome</strong>No appointment needed</div>
+  </div>
+  <div class="rating-item">
+    <div class="rating-label"><strong>Open 7 Days a Week</strong>Mon–Fri until 6:30 PM</div>
+  </div>
+  <div class="rating-item">
+    <div class="rating-label"><strong>All Major Payments</strong>Credit · Debit · Cash</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <p class="section-label">What We Offer</p>
+  <h2 class="section-heading">Our Services</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-name">Manicure</div>
+      <div class="service-desc">Classic and gel manicures with shaping, cuticle care, and your pick of color.</div>
+      <div class="service-price"><a href="tel:8316367644" class="price-btn">Call for Price</a></div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-name">Pedicure</div>
+      <div class="service-desc">Relaxing foot soak, callus treatment, scrub, massage, and polish.</div>
+      <div class="service-price"><a href="tel:8316367644" class="price-btn">Call for Price</a></div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-name">Acrylic Nails</div>
+      <div class="service-desc">Full sets and fills for strong, long-lasting extensions in any shape.</div>
+      <div class="service-price"><a href="tel:8316367644" class="price-btn">Call for Price</a></div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-name">Gel Polish</div>
+      <div class="service-desc">Chip-resistant high-gloss gel color that lasts up to three weeks.</div>
+      <div class="service-price"><a href="tel:8316367644" class="price-btn">Call for Price</a></div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-name">Dip Powder</div>
+      <div class="service-desc">Long-lasting color without UV — stronger and more flexible than regular polish.</div>
+      <div class="service-price"><a href="tel:8316367644" class="price-btn">Call for Price</a></div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-name">Spa Pedicure</div>
+      <div class="service-desc">Upgraded pedicure with exfoliation, mask treatment, and extended massage.</div>
+      <div class="service-price"><a href="tel:8316367644" class="price-btn">Call for Price</a></div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">07</div>
+      <div class="service-name">Nail Art</div>
+      <div class="service-desc">Custom designs, ombré, French tips, gems, and seasonal styles.</div>
+      <div class="service-price"><a href="tel:8316367644" class="price-btn">Call for Price</a></div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">08</div>
+      <div class="service-name">Fill-ins</div>
+      <div class="service-desc">Acrylic and gel fill-ins to maintain and refresh your existing set.</div>
+      <div class="service-price"><a href="tel:8316367644" class="price-btn">Call for Price</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT -->
+<div class="payment-section">
+  <h3>We Accept All Major Payments</h3>
+  <p>No surprises — pay your way</p>
+  <div class="payment-methods">
+    <div class="payment-chip">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a14" stroke-width="1.8" width="14" height="14"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      Credit Card
+    </div>
+    <div class="payment-chip">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a14" stroke-width="1.8" width="14" height="14"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      Debit Card
+    </div>
+    <div class="payment-chip">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a14" stroke-width="1.8" width="14" height="14"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      Cash
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <p class="section-label">What Customers Say</p>
+  <h2 class="section-heading">Real Reviews</h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <span class="review-quote-mark">"</span>
+      <p class="review-text">Sandy is the only one who can do the dip manicure and she does an amazing job!! My nails always come out perfect. Highly recommend asking for her.</p>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-meta">
+        <div class="review-author">Yelp Reviewer</div>
+        <div class="review-source">Yelp</div>
+      </div>
+    </div>
+    <div class="review-card">
+      <span class="review-quote-mark">"</span>
+      <p class="review-text">Helen did a beautiful job on my very ugly and short nails and over neglected feet. I left feeling so pampered and confident. Will definitely be coming back!</p>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-meta">
+        <div class="review-author">Yelp Reviewer</div>
+        <div class="review-source">Yelp</div>
+      </div>
+    </div>
+    <div class="review-card">
+      <span class="review-quote-mark">"</span>
+      <p class="review-text">Great neighborhood nail salon. Friendly staff and they always fit me in as a walk-in without a long wait. My go-to spot in Hollister.</p>
+      <div class="review-stars">★★★★☆</div>
+      <div class="review-meta">
+        <div class="review-author">Google Reviewer</div>
+        <div class="review-source">Google · 4.2 ★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS + MAP -->
+<div class="hours-map-wrap" id="hours">
+  <section class="hours-section">
+    <p class="section-label">Hours of Operation</p>
+    <h2 class="section-heading">When to<br>find us</h2>
+    <div class="hours-rows" id="hours-rows"></div>
+    <p class="hours-note">* Call ahead on holidays or for same-day availability.</p>
+  </section>
+
+  <div class="map-section" id="visit">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000!2d-121.397454!3d36.8537913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8091f62cfc88fdd5%3A0x2bd9fc8032c595e8!2s201%20McCray%20St%20Suite%20D%2C%20Hollister%2C%20CA%2095023!5e0!3m2!1sen!2sus!4v1"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      title="Angel Nails location map">
+    </iframe>
+    <div class="map-info-bar">
+      <div>
+        <h3>201 McCray St, Suite D · Hollister, CA 95023</h3>
+        <p>(831) 636-7644 · Walk-ins welcome · Open 7 days a week</p>
+      </div>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=201+McCray+St+Suite+D+Hollister+CA+95023" target="_blank" class="map-directions-btn">Get Directions →</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Angel <span>Nails</span></div>
+  <div class="footer-tagline">Hollister, California</div>
+  <a href="tel:8316367644" class="footer-phone">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    (831) 636-7644
+  </a>
+  <hr class="footer-divider">
+  <div class="footer-cols">
+    <div class="footer-col">
+      <h4>Visit Us</h4>
+      <p>201 McCray St, Suite D<br>Hollister, CA 95023</p>
+      <p style="margin-top:0.4rem;">Walk-ins Welcome<br>Credit · Debit · Cash</p>
+    </div>
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <p>Mon – Fri: 9:30 AM – 6:30 PM</p>
+      <p>Saturday: 9:30 AM – 6:00 PM</p>
+      <p>Sunday: 9:30 AM – 5:00 PM</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <p>Manicure &amp; Pedicure</p>
+      <p>Acrylic Nails &amp; Fill-ins</p>
+      <p>Gel Polish &amp; Dip Powder</p>
+      <p>Nail Art &amp; Spa Pedicure</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Angel Nails · Hollister, CA</span>
+    <span>Hours subject to change · Call ahead to confirm</span>
+  </div>
+</footer>
+
+<script>
+const schedule = [
+  { day: "Monday",    open: "9:30 AM", close: "6:30 PM" },
+  { day: "Tuesday",   open: "9:30 AM", close: "6:30 PM" },
+  { day: "Wednesday", open: "9:30 AM", close: "6:30 PM" },
+  { day: "Thursday",  open: "9:30 AM", close: "6:30 PM" },
+  { day: "Friday",    open: "9:30 AM", close: "6:30 PM" },
+  { day: "Saturday",  open: "9:30 AM", close: "6:00 PM" },
+  { day: "Sunday",    open: "9:30 AM", close: "5:00 PM" }
+];
+
+const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const todayName = dayNames[new Date().getDay()];
+const container = document.getElementById("hours-rows");
+
+schedule.forEach(s => {
+  const isToday = s.day === todayName;
+  const row = document.createElement("div");
+  row.className = "hours-row" + (isToday ? " today-row" : "");
+  row.innerHTML = `
+    <span class="hours-day">
+      ${isToday ? '<span class="today-pip"></span>' : ''}${s.day}
+    </span>
+    <span class="hours-time">${s.open} – ${s.close}</span>
+  `;
+  container.appendChild(row);
+});
+
+const today = schedule.find(s => s.day === todayName);
+if (today) {
+  document.getElementById("hero-hours").textContent = today.open + " – " + today.close;
+}
+</script>
+</body>
+</html>
